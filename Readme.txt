@@ -1,0 +1,1 @@
+Clipboard Manager, while running, keeps track of all text stored on your computer's clipboard so that it can be easily recopied if needed.
