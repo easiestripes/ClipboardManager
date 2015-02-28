@@ -12,11 +12,13 @@ public class ClipboardItem extends JPanel implements ActionListener {
 
     JLabel label = new JLabel("");
     JButton copyButton = new JButton("Copy");
+    String text;
     ClipboardManager manager;
 
     public ClipboardItem(ClipboardManager cbm, String currCopy) {
     	this.setBackground(Color.gray);
 		copyButton.addActionListener(this);
+		this.text = currCopy;
 		label.setText(currCopy);
 		this.setPreferredSize(new Dimension(400, 50));
 		this.add(label);
@@ -26,6 +28,10 @@ public class ClipboardItem extends JPanel implements ActionListener {
     
     public JLabel getLabel() {
 		return label;
+	}
+    
+    public String getText() {
+		return text;
 	}
 
 	public JButton getCopyButton() {

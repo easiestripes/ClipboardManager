@@ -62,6 +62,7 @@ public class ClipboardManager {
 			}
 		}
 		itemList.add(updateItem);
+		setClipboard(updateItem.getText());
 		frame.add(itemList.get(itemList.size()-1));
 		frame.revalidate();
 		frame.repaint();
@@ -99,9 +100,18 @@ public class ClipboardManager {
 				} catch (InterruptedException e) {
 				}
 				String currCopy = getClipboard();
+				boolean isNewItem = true;
 				if(currCopy != null && !currCopy.equals(lastCopy)) {
-					createClipboardItem(currCopy);
-					lastCopy = currCopy;
+					for(ClipboardItem item: itemList) {
+						if(item.getText().equals(currCopy)) {
+							isNewItem = false;
+							break;
+						}
+					}
+					if(isNewItem) {
+						createClipboardItem(currCopy);
+						lastCopy = currCopy;
+					}
 				}
 			}
 		}
