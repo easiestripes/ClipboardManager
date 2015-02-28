@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
@@ -47,6 +48,9 @@ public class ClipboardManager {
 
 	public void createClipboardItem(String currCopy) {
 		itemList.add(new ClipboardItem(this, currCopy));
+		int i = (itemList.size() == 1) ? 1 : 2;
+		itemList.get(itemList.size()-i).setBackground(Color.gray);
+		itemList.get(itemList.size()-1).setBackground(Color.yellow);
 		frame.add(itemList.get(itemList.size()-1));
 		frame.revalidate();
 		frame.repaint();
@@ -61,7 +65,9 @@ public class ClipboardManager {
 				break;
 			}
 		}
+		itemList.get(itemList.size()-1).setBackground(Color.gray);
 		itemList.add(updateItem);
+		itemList.get(itemList.size()-1).setBackground(Color.yellow);
 		setClipboard(updateItem.getText());
 		frame.add(itemList.get(itemList.size()-1));
 		frame.revalidate();
