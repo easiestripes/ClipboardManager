@@ -58,20 +58,22 @@ public class ClipboardManager {
 
 // rearrange clipboard item to current order
 	public void updateClipboardItem(ClipboardItem updateItem) {
-		for(int i = 0; i < itemList.size(); i++) {
-			if(itemList.get(i).getLabel().getText().equals(updateItem.getLabel().getText())) {
-				frame.remove(itemList.get(i));
-				itemList.remove(itemList.get(i));
-				break;
+		if(itemList.size() > 1) {
+			for(int i = 0; i < itemList.size(); i++) {
+				if(itemList.get(i).getLabel().getText().equals(updateItem.getLabel().getText())) {
+					frame.remove(itemList.get(i));
+					itemList.remove(itemList.get(i));
+					break;
+				}
 			}
+			itemList.get(itemList.size()-1).setBackground(Color.gray);
+			itemList.add(updateItem);
+			itemList.get(itemList.size()-1).setBackground(Color.yellow);
+			setClipboard(updateItem.getText());
+			frame.add(itemList.get(itemList.size()-1));
+			frame.revalidate();
+			frame.repaint();
 		}
-		itemList.get(itemList.size()-1).setBackground(Color.gray);
-		itemList.add(updateItem);
-		itemList.get(itemList.size()-1).setBackground(Color.yellow);
-		setClipboard(updateItem.getText());
-		frame.add(itemList.get(itemList.size()-1));
-		frame.revalidate();
-		frame.repaint();
 	}
 	
 // get current string on clipboard

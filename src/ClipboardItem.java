@@ -12,6 +12,7 @@ public class ClipboardItem extends JPanel implements ActionListener {
 
     JLabel label = new JLabel("");
     JButton copyButton = new JButton("Copy");
+    //JButton removeButton = new JButton("Remove");
     String text;
     ClipboardManager manager;
 
